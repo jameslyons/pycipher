@@ -1,0 +1,13 @@
+pycipher
+by James Lyons
+
+Common classical ciphers module
+
+to build:
+python setup.py sdist
+
+to test:
+python setup.py test
+
+to install:
+pip install pycipher-0.1.tgz
