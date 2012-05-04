@@ -4,7 +4,6 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 from .base import Cipher
-import re
 
 ####################################################################################
 class Foursquare(Cipher):
@@ -26,7 +25,7 @@ class Foursquare(Cipher):
         return (self.alph[arow*5+bcol], self.alph[brow*5+acol])
         
     def encipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
         for c in xrange(0,len(string.upper()),2):
@@ -35,7 +34,7 @@ class Foursquare(Cipher):
         return ret    
 
     def decipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
         for c in xrange(0,len(string.upper()),2):

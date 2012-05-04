@@ -4,7 +4,6 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 from .base import Cipher
-import re
 
 ####################################################################################
 class Gronsfeld(Cipher):
@@ -12,7 +11,7 @@ class Gronsfeld(Cipher):
         self.key = key
 
     def encipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         ret = ''
         for (i,c) in enumerate(string):
             i = i%len(self.key)
@@ -20,7 +19,7 @@ class Gronsfeld(Cipher):
         return ret 
 
     def decipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         ret = ''
         for (i,c) in enumerate(string):
             i = i%len(self.key)

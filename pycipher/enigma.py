@@ -26,7 +26,7 @@ class Enigma(Cipher):
         self.initsettings = settings  # remember the starting settings
         self.settings = list(settings) # these settings will be updated each character
         self.rotors = tuple([q-1 for q in rotors])
-        self.reflector = ord(reflector.upper()) - ord('A')
+        self.reflector = self.a2i(reflector)
         self.ringstellung = ringstellung
         self.steckers = steckers
         self.rotorkey =("EKMFLGDQVZNTOWYHXUSPAIBRCJ", # rotor keys
@@ -106,6 +106,7 @@ class Enigma(Cipher):
         return self.encipher(string)
                 
     def encipher(self,string):
+        string = self.remove_punctuation(string)
         ret = ''
         for c in string.upper():
             if c.isalpha(): ret += self.encipher_char(c)

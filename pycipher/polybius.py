@@ -26,14 +26,13 @@ class PolybiusSquare(Cipher):
         return self.key[row*self.size + col]
 
     def encipher(self,string):
-        ''' punctuation is removed with this cipher '''
-        string = re.sub('[^'+self.key+']','',string.upper())
+        string = self.remove_punctuation(string)
         ret = ''
-        for c in string:
-            if c.isalpha(): ret += self.encipher_char(c)
+        for c in string: ret += self.encipher_char(c)
         return ret    
 
     def decipher(self,string):
+        string = self.remove_punctuation(string)
         ret = ''
         for i in xrange(0,len(string),2):
             ret += self.decipher_pair(string[i:i+2])

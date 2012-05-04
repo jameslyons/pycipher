@@ -4,20 +4,14 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 from .base import Cipher
-import re
 
 ####################################################################################
 class Autokey(Cipher):
-    def __init__(self,key='fortification'):
+    def __init__(self,key='a'):
         self.key = [k.upper() for k in key]
         
-    def subst(self,ch,key='ABCDEFGHIJKLMNOPQRSTUVWXYZ',offset=0):
-        ''' substitute a single character according to the key '''
-        index = (self.val(ch) + offset)%26
-        return key[index]
-        
     def encipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)
         ret = ''
         for (i,c) in enumerate(string):
             if i<len(self.key): offset = self.a2i(self.key[i])
@@ -26,7 +20,7 @@ class Autokey(Cipher):
         return ret    
 
     def decipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)
         ret = ''
         for (i,c) in enumerate(string):
             if i<len(self.key): offset = self.a2i(self.key[i])

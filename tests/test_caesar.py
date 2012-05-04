@@ -35,5 +35,9 @@ class TestCaesar(unittest.TestCase):
         ''' Caesar (test_punctuation): punctuation should remain unmodified '''
         e = Caesar(key=14)
         original = '!@$%%^&*()_-+={}[]|":;<>,./?'
-        enciphered = e.encipher(original)
+        enciphered = e.encipher(original,keep_punct=True)
         self.assertEqual(original.upper(), enciphered.upper())
+        e = Caesar(key=14)
+        original = '!@$%%^&*()_-+={}[]|":;<>,./?'
+        enciphered = e.encipher(original,keep_punct=False)
+        self.assertEqual('', enciphered.upper())        

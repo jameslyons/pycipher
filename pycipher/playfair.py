@@ -28,7 +28,7 @@ class Playfair(Cipher):
         else: return self.key[arow*5 + bcol] + self.key[brow*5 + acol]        
         
     def encipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         string = re.sub(r'[J]','I',string)
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
@@ -37,7 +37,7 @@ class Playfair(Cipher):
         return ret    
 
     def decipher(self,string):
-        string = re.sub(r'[^A-Z]','',string.upper())
+        string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
         for c in xrange(0,len(string),2):

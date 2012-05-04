@@ -35,5 +35,9 @@ class TestAffine(unittest.TestCase):
         ''' AffineSubstitution (test_punctuation): punctuation should be unmodified '''
         e = AffineSubstitution(a=7,b=8)
         original = '!@$%%^&*()_-+={}[]|":;<>,./?'
-        enciphered = e.encipher(original)
+        enciphered = e.encipher(original,keep_punct=True)
         self.assertEqual(original.upper(), enciphered.upper())
+        e = AffineSubstitution(a=7,b=8)
+        original = '!@$%%^&*()_-+={}[]|":;<>,./?'
+        enciphered = e.encipher(original,keep_punct=False)
+        self.assertEqual('', enciphered.upper())

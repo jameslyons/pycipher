@@ -4,6 +4,7 @@ really only provides mappings a2i and i2a for letter->int->letter conversions
 Author: James Lyons
 Created: 2012-04-28
 '''
+import re
 
 class Cipher(object):
     def encipher(self,string):
@@ -24,4 +25,5 @@ class Cipher(object):
         arr = ('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')
         return arr[i]
         
-
+    def remove_punctuation(self,text):
+        return re.sub('[^A-Z]','',text.upper())

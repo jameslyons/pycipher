@@ -12,7 +12,6 @@ class ADFGVX(Cipher):
     def __init__(self,key='ph0qg64mea1yl2nofdxkr3cvs5zw7bj9uti8',keyword='GERMAN'):
         self.key = [k.upper() for k in key]
         self.keyword = keyword
-        self.chars = 'ADFGVX'
         assert len(key)==36, 'invalid key in init: must have length 36, has length '+str(len(key))
         assert len(keyword)>0, 'invalid keyword in init: should have length >= 1'
        

@@ -4,7 +4,6 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 from .base import Cipher
-from math import ceil
 
 ####################################################################################
 class ColTrans(Cipher):
@@ -24,6 +23,7 @@ class ColTrans(Cipher):
         return [q[1] for q in sorted(t1)]        
         
     def encipher(self,string):
+        string = self.remove_punctuation(string)    
         ret = ''
         ind = self.sortind(self.keyword)
         for i in range(len(self.keyword)):
@@ -32,6 +32,7 @@ class ColTrans(Cipher):
 
     def decipher(self,string):
         ''' deciphering is messy because the columns may be ragged '''
+        string = self.remove_punctuation(string)        
         ret = ['_']*len(string)
         L,M = len(string),len(self.keyword)
         ind = self.unsortind(self.keyword)

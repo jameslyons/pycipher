@@ -5,7 +5,6 @@ Created: 2012-04-28
 '''
 
 from .base import Cipher
-import re
 
 class M209(Cipher):
     ''' these key settings correspond to the wheel settings on wikipedia:  http://en.wikipedia.org/wiki/M-209 '''
@@ -30,7 +29,7 @@ class M209(Cipher):
         for i in range(0,6): self.actual_key[i] = (self.wheel_starts[i] + 15 - i)%self.wheel_lengths[i]
         
     def encipher(self,message):
-        message = re.sub(r'[^A-Z]','',message.upper())
+        message = self.remove_punctuation(message)  
         effective_ch = [0,0,0,0,0,0,0] # these are the wheels which are effective currently, 1 for yes, 0 no
                                        # -the zero at the beginning is extra, indicates lug was in pos 0
         ret = ''

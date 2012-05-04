@@ -4,34 +4,26 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 from .base import Cipher
-import re
+from polybius import PolybiusSquare
 ####################################################################################
 class Bifid(Cipher):
-    def __init__(self,key='phqgmeaylnofdxkrcvszwbuti',period=5,combine='IJ'):
+    def __init__(self,key='phqgmeaylnofdxkrcvszwbuti',period=5):
         self.key = [k.upper() for k in key]
+        self.pb = PolybiusSquare(self.key,size=5)
         self.period = period
-        self.combine = combine
         assert len(key)==25, 'invalid key in init: must have length 25, has length '+str(len(key))
         assert period>=1, 'invalid period in init: period should be >= 1'
 
     def encipher(self,string):
-        ''' punctuation is removed with this cipher '''
-        ret = ''
-        rowseq,colseq = [],[]
-        for ch in string.upper():
-            if not ch.isalpha(): continue
-            if ch in self.combine: ch = self.combine[0]
-            rowseq.append(self.key.index(ch) / 5)
-            colseq.append(self.key.index(ch) % 5)
-        # rearrange row,col sequences based on period
-        seq = []
+        string = self.remove_punctuation(string)
+        step1 = self.pb.encipher(string)
+        evens = step1[::2]
+        odds = step1[1::2]
+        step2 = []
         for i in xrange(0,len(string),self.period):
-            seq += rowseq[i:i+self.period]
-            seq += colseq[i:i+self.period]
-        # take pairs of seq, run through polybius square        
-        for i in xrange(0,len(seq),2):
-            ret += self.key[seq[i]*5 + seq[i+1]]
-        return ret
+            step2 += evens[i:i+self.period]
+            step2 += odds[i:i+self.period]
+        return self.pb.decipher(''.join(step2))
 
     def decipher(self,string):
         ret = ''
