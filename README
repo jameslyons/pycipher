@@ -1,7 +1,7 @@
-pycipher
-by James Lyons
+pycipher V0.1
 
 Common classical ciphers module
+
 
 to build:
 python setup.py sdist
