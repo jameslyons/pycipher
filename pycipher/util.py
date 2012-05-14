@@ -92,3 +92,36 @@ def restore_punctuation(original,modified):
         print 'restore_punctuation: strings must have same number of alphabetic chars'
         raise
     return ret
+    
+from itertools import permutations
+    
+def markov_freq(text,order=1,log=False,floor=0.01):
+    if order == 0: return ngram_freq(text,1,log,floor)
+    freq = ngram_count(text,order+1)
+    prior_count = {}
+    for k in freq.keys():            
+        prior = k[:order]
+        if prior in prior_count: prior_count[prior] += freq[k]
+        else: prior_count[prior] = freq[k]
+    for k in freq.keys():            
+        prior = k[:order]
+        freq[prior] = True # put the priors in the db too, we need to know which ones are there
+        if log:
+            freq[k] = math.log10(freq[k]/prior_count[prior])
+        else:
+            freq[k] = freq[k]/prior_count[prior]
+        freq['floor'] = math.log10(floor)
+      
+    return freq    
+
+
+def keyword_to_key(word,alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+    ''' convert a key word to a key by appending on the other letters of the alphabet.
+    e.g. MONARCHY -> MONARCHYBDEFGIJKLPQSTUVWXZ
+    '''
+    ret = ''
+    word = (word + alphabet).upper()
+    for i in word:
+        if i in ret: continue
+        ret += i
+    return ret    
