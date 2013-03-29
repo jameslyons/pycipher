@@ -7,15 +7,14 @@ from .base import Cipher
 
 ####################################################################################
 class Affine(Cipher):
+    """The Affine Cipher has two components to the key, numbers *a* and *b*.
+    This cipher encrypts a letter according to the following equation:
+        c = a*p + b
+    where c is the ciphertext letter, p the plaintext letter.
+    *b* is an integer 0-25, *a* is an integer that has an inverse (mod 26).
+    Allowable values for *a* are: 1,3,5,7,9,11,15,17,19,21,23,25 
+    """   
     def __init__(self,a=5,b=9):
-        ''' 
-        The Affine Cipher has two components to the key, numbers *a* and *b*.
-        This cipher encrypts a letter according to the following equation:
-            c = a*p + b
-        where c is the ciphertext letter, p the plaintext letter.
-        *b* is an integer 0-25, *a* is an integer that has an an inverse (mod 26).
-        Allowable values for *a* are: 1,3,5,7,9,11,15,17,19,21,23,25 
-        '''    
         self.a = a
         self.b = b
         self.inva = -1
@@ -24,12 +23,16 @@ class Affine(Cipher):
         assert 0 <= self.inva <= 25, 'invalid key: a='+str(a)+', no inverse exists (mod 26)'
 
     def encipher(self,string,keep_punct=False):
-        '''
-        enciphers *string* according to the initialised key. By default all punctuation and whitespace
-        are removed, however it can be kept by setting *keep_punct*=True.
-        Example:
-        ciphertext = Affine(a,b).encipher(plaintext)       
-        '''
+        """Encipher string using affine cipher according to initialised key.
+
+        Example::
+        
+            ciphertext = Affine(a,b).encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :param keep_punct: if true, punctuation and spacing are retained. If false, it is all removed. Default is False. 
+        :returns: The enciphered string.
+        """        
         if not keep_punct: string = self.remove_punctuation(string)
         ret = ''
         for c in string:
@@ -38,16 +41,16 @@ class Affine(Cipher):
         return ret    
 
     def decipher(self,string,keep_punct=False):
-        '''
-        deciphers *string* according to the initialised key. By default all punctuation and whitespace
-        are removed, however it can be kept by setting *keep_punct*=True.
+        """Decipher string using affine cipher according to initialised key.
 
-        Performs the inverse operation to `encipher`, i.e. the original text is recovered if this function
-        is used on the ciphertext when initialised with the same key.
+        Example::
+        
+            plaintext = Affine(a,b).decipher(ciphertext)     
 
-        Example:
-        plaintext = Affine(a,b).decipher(ciphertext)               
-        '''    
+        :param string: The string to decipher.
+        :param keep_punct: if true, punctuation and spacing are retained. If false, it is all removed. Default is False. 
+        :returns: The deciphered string.
+        """        
         if not keep_punct: string = self.remove_punctuation(string)    
         ret = ''
         for c in string:
