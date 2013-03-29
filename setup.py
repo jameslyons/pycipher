@@ -20,4 +20,5 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
     ],
+    long_description=open('docs/README.rst', 'rt').read()
 )
