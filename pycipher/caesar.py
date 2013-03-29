@@ -7,18 +7,19 @@ Created: 2012-04-28
 from .base import Cipher
 
 class Caesar(Cipher):
+    """The Caesar Cipher has a key consisting of an integer 1-25.
+    This cipher encrypts a letter according to the following equation:
+        c = p + key
+    where c is the ciphertext letter, p the plaintext letter.
+    """       
     def __init__(self,key=13):
-        """The Caesar Cipher has a key consisting of an integer 1-25.
-        This cipher encrypts a letter according to the following equation:
-            c = p + key
-        where c is the ciphertext letter, p the plaintext letter.
-        """       
         self.key = key % 26
         
     def encipher(self,string,keep_punct=False):
         """Encipher string using Caesar cipher according to initialised key.
 
         Example::
+
             ciphertext = Caesar(3).encipher(plaintext)     
 
         :param string: The string to encipher.
@@ -36,6 +37,7 @@ class Caesar(Cipher):
         """Decipher string using Caesar cipher according to initialised key.
 
         Example::
+
             plaintext = Caesar(3).decipher(ciphertext)     
 
         :param string: The string to decipher.

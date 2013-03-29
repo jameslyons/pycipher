@@ -3,6 +3,7 @@ pycipher
 
 Common classical ciphers implemented in Python.
 
+Currently only Caesar, Simple Sub, Affine and Vigenere ciphers are implemented, but there will be more to come soon.
 
 Install
 -------

@@ -7,15 +7,17 @@ Created: 2012-04-28
 from base import Cipher
 
 class SimpleSubstitution(Cipher):
+    """The Simple Substitution Cipher has a key consisting of the letters A-Z jumbled up.
+    e.g. 'AJPCZWRLFBDKOTYUQGENHXMIVS'
+    This cipher encrypts a letter according to the following equation::
+
+        plaintext =  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+        ciphertext = AJPCZWRLFBDKOTYUQGENHXMIVS
+
+    To convert a plaintext letter into ciphertext, read along the plaintext row until the desired
+    letter is found, then substitute it with the letter below it.
+    """           
     def __init__(self,key='AJPCZWRLFBDKOTYUQGENHXMIVS'):
-        """The Simple Substitution Cipher has a key consisting of the letters A-Z jumbled up.
-        e.g. 'AJPCZWRLFBDKOTYUQGENHXMIVS'
-        This cipher encrypts a letter according to the following equation::
-            plaintext =  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-            ciphertext = AJPCZWRLFBDKOTYUQGENHXMIVS
-        To convert a plaintext letter into ciphertext, read along the plaintext row until the desired
-        letter is found, then substitute it with the letter below it.
-        """           
         assert len(key) == 26
         self.key = [k.upper() for k in key]
         self.invkey = ''
@@ -24,6 +26,7 @@ class SimpleSubstitution(Cipher):
         """Encipher string using Simple Substitution cipher according to initialised key.
 
         Example::
+
             ciphertext = SimpleSubstitution('AJPCZWRLFBDKOTYUQGENHXMIVS').encipher(plaintext)     
 
         :param string: The string to encipher.
@@ -41,6 +44,7 @@ class SimpleSubstitution(Cipher):
         """Decipher string using Simple Substitution cipher according to initialised key.
 
         Example::
+
             plaintext = SimpleSubstitution('AJPCZWRLFBDKOTYUQGENHXMIVS').decipher(ciphertext)     
 
         :param string: The string to decipher.
