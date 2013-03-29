@@ -11,6 +11,7 @@ setup(
 
     packages=find_packages(exclude=['tests','tests.*']),
     include_package_data=True,  # declarations in MANIFEST.in
+    url='https://github.com/jameslyons/pycipher',
     test_suite='tests',
 
     classifiers=[
@@ -20,5 +21,5 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
     ],
-    long_description=open('docs/README.rst', 'rt').read()
+    long_description=open('README.rst', 'rt').read()
 )
