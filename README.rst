@@ -9,7 +9,7 @@ Install
 
 ::
 
-    pip install git+https://github.com/jameslyons/pycipher
+    pip install git+git://github.com/jameslyons/pycipher
 
 
 Example usage
