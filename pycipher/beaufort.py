@@ -34,7 +34,7 @@ class Beaufort(Cipher):
         return ret    
 
     def decipher(self,string):
-         """Decipher string using Beaufort cipher according to initialised key. Punctuation and whitespace
+        """Decipher string using Beaufort cipher according to initialised key. Punctuation and whitespace
         are removed from the input. For the Beaufort cipher, enciphering and deciphering are the same operation.
 
         Example::
@@ -42,7 +42,7 @@ class Beaufort(Cipher):
             plaintext = Beaufort('HELLO').decipher(ciphertext)     
 
         :param string: The string to decipher.
-        :returns: The enciphered string.
+        :returns: The deciphered string.
         """   
         return self.encipher(string)    
 
