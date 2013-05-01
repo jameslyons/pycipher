@@ -59,10 +59,10 @@ class Playfair(Cipher):
         
     def pad_doubles(string):
         ''' There are two ways of handling double letters in playfair, 
-        method 1: replacing the second occurrance with a pad character 
-                  e.g. 'THEATTACK'->'THEATXACK'
+        method 1: replacing the second occurrance with a pad character
+        e.g. 'THEATTACK'->'THEATXACK'                
         method 2: putting a pad character between the pair
-                  e.g. 'THEATTACK'->'THEATXTACK'.
+        e.g. 'THEATTACK'->'THEATXTACK'.
         This function implements method 2. It returns a modified string, possibly of different
         length to the original.
         '''

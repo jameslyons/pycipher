@@ -8,12 +8,15 @@ from .base import Cipher
 ####################################################################################
 class Affine(Cipher):
     """The Affine Cipher has two components to the key, numbers *a* and *b*.
-    This cipher encrypts a letter according to the following equation:
+    This cipher encrypts a letter according to the following equation::
+    
         c = a*p + b
+        
     where c is the ciphertext letter, p the plaintext letter.
     *b* is an integer 0-25, *a* is an integer that has an inverse (mod 26).
     Allowable values for *a* are: 1,3,5,7,9,11,15,17,19,21,23,25 
     """   
+    
     def __init__(self,a=5,b=9):
         self.a = a
         self.b = b

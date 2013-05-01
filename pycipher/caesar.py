@@ -1,22 +1,23 @@
-'''
-implements Caesar substitution cipher
-Author: James Lyons 
-Created: 2012-04-28
-'''
+#implements Caesar substitution cipher
+#Author: James Lyons 
+#Created: 2012-04-28
 
 from .base import Cipher
 
 class Caesar(Cipher):
     """The Caesar Cipher has a key consisting of an integer 1-25.
-    This cipher encrypts a letter according to the following equation:
+    This cipher encrypts a letter according to the following equation::
+    
         c = p + key
+        
     where c is the ciphertext letter, p the plaintext letter.
     """       
+    
     def __init__(self,key=13):
         self.key = key % 26
         
     def encipher(self,string,keep_punct=False):
-        """Encipher string using Caesar cipher according to initialised key.
+        r"""Encipher string using Caesar cipher according to initialised key.
 
         Example::
 
@@ -34,7 +35,7 @@ class Caesar(Cipher):
         return ret    
 
     def decipher(self,string,keep_punct=False):
-        """Decipher string using Caesar cipher according to initialised key.
+        r"""Decipher string using Caesar cipher according to initialised key.
 
         Example::
 
