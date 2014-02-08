@@ -7,7 +7,35 @@ Created: 2012-04-28
 from .base import Cipher
 
 class M209(Cipher):
-    ''' these key settings correspond to the wheel settings on wikipedia:  http://en.wikipedia.org/wiki/M-209 '''
+    ''' The M209 cipher. The key consists of several parameters.
+    
+    :param wheel_starts: The rotor start positions, consists of 6 characters e.g. "AAAAAA". Note that not all character combinations are possible, e.g. wheel 6 has only 17 characters.
+    :param w1s: wheel 1 settings. An array of 26 binary values.
+    :param w2s: wheel 2 settings. An array of 25 binary values.
+    :param w3s: wheel 3 settings. An array of 23 binary values.
+    :param w4s: wheel 4 settings. An array of 21 binary values.
+    :param w5s: wheel 5 settings. An array of 19 binary values.
+    :param w6s: wheel 6 settings. An array of 17 binary values.
+    :param lugpos: The lugs, a 27-tuple of 2-tuples. See below for an example.
+        
+    Example::
+    
+        wheel_1_settings = [1,1,0,1,0,0,0,1,1,0,1,0,1,1,0,0,0,0,1,1,0,1,1,0,0,0]
+        wheel_2_settings = [1,0,0,1,1,0,1,0,0,1,1,1,0,0,1,0,0,1,1,0,1,0,1,0,0]
+        wheel_3_settings = [1,1,0,0,0,0,1,1,0,1,0,1,1,1,0,0,0,1,1,1,1,0,1]
+        wheel_4_settings = [0,0,1,0,1,1,0,1,1,0,0,0,1,1,0,1,0,0,1,1,1]
+        wheel_5_settings = [0,1,0,1,1,1,0,1,1,0,0,0,1,1,0,1,0,0,1]
+        wheel_6_settings = [1,1,0,1,0,0,0,1,0,0,1,0,0,1,1,0,1]
+        wheel_starts = "AAAAAA"
+        lug_positions = ((0,6),(3,6),(1,6),(1,5),(4,5),(0,4),(0,4),(0,4),(0,4),
+                         (2,0),(2,0),(2,0),(2,0),(2,0),(2,0),(2,0),(2,0),(2,0),
+                         (2,0),(2,5),(2,5),(0,5),(0,5),(0,5),(0,5),(0,5),(0,5))
+        m = M209(wheel_1_settings, wheel_2_settings, wheel_3_settings
+                 wheel_4_settings, wheel_5_settings, wheel_6_settings
+                 wheel_starts, lug_positions)
+        
+    '''
+    # these key settings correspond to the wheel settings on wikipedia:  http://en.wikipedia.org/wiki/M-209 '''
     def __init__(self,wheel_starts='AAAAAA',w1s=None,w2s=None,w3s=None,w4s=None,w5s=None,w6s=None,lugpos=None):
         # 1 corresponds to effective, 0 to ineffective. Position in array determines character.
         self.wheel_1_settings = w1s or [1,1,0,1,0,0,0,1,1,0,1,0,1,1,0,0,0,0,1,1,0,1,1,0,0,0]
@@ -29,6 +57,16 @@ class M209(Cipher):
         for i in range(0,6): self.actual_key[i] = (self.wheel_starts[i] + 15 - i)%self.wheel_lengths[i]
         
     def encipher(self,message):
+        """Encipher string using M209 cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.       
+
+        Example (continuing from the example above)::
+        
+            ciphertext = m.encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :returns: The enciphered string.
+        """           
         message = self.remove_punctuation(message)  
         effective_ch = [0,0,0,0,0,0,0] # these are the wheels which are effective currently, 1 for yes, 0 no
                                        # -the zero at the beginning is extra, indicates lug was in pos 0
@@ -52,6 +90,16 @@ class M209(Cipher):
         return ret
 
     def decipher(self,message):
+        """Decipher string using M209 cipher according to initialised key. Punctuation and whitespace
+        are removed from the input. The encipher and decipher operations of the M209 are identical.
+
+        Example (continuing from the example above)::
+
+            plaintext = m.decipher(ciphertext)     
+
+        :param string: The string to decipher.
+        :returns: The deciphered string.
+        """           
         return self.encipher(message)
         
     def subst(self,ch,key,offset=0):
@@ -59,7 +107,7 @@ class M209(Cipher):
         return key[index]
   
     def advance_key(self):
-        ''' advance each key wheel, noting that each is a different size and wraps at  a different length '''
+        # advance each key wheel, noting that each is a different size and wraps at  a different length '''
         for i in range(0,6): self.actual_key[i] = (self.actual_key[i] + 1) % self.wheel_lengths[i]
         
         

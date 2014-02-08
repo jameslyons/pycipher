@@ -11,8 +11,10 @@ class Beaufort(Cipher):
     This cipher encrypts a letter according to the Vigenere tableau, the but uses a different algorithm to find the
     ciphertext letter. The algorithm can be 
     seen e.g. http://www.practicalcryptography.com/ciphers/beaufort-cipher/
+    
+    :param key: The keyword, any word or phrase will do. Must consist of alphabetical characters only, no punctuation of numbers.          
     """
-    def __init__(self,key='a'):
+    def __init__(self,key='FORTIFICATION'):
         self.key = [k.upper() for k in key]
         
     def encipher(self,string):

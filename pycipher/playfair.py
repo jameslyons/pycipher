@@ -8,10 +8,12 @@ import re
 
 ####################################################################################
 class Playfair(Cipher):
-    '''
-    Create a Playfair cipher object with a certain key. This object allows enciphering and deciphering
-    of text.
-    '''
+    """The Playfair Cipher enciphers pairs of characters, the key consists of a keysquare 25 characters in length.
+    More information about the algorithm can be 
+    found at http://www.practicalcryptography.com/ciphers/playfair-cipher/.
+    
+    :param key: The keysquare, as a 25 character string.
+    """
     def __init__(self,key='monarchybdefgiklpqstuvwxz'):
         self.key = [k.upper() for k in key]
         
@@ -32,10 +34,16 @@ class Playfair(Cipher):
         else: return self.key[arow*5 + bcol] + self.key[brow*5 + acol]        
         
     def encipher(self,string):
-        '''
-        Encipher a string *string* using the Playfair cipher. All punctuation and spaces are removed from the string.
-        If the string has an odd number of characters, a pad character is appended. All 'J' characters are replaced with 'I'.
-        '''
+        """Encipher string using Playfair cipher according to initialised key. Punctuation and whitespace
+        are removed from the input. If the input plaintext is not an even number of characters, an 'X' will be appended.
+
+        Example::
+
+            ciphertext = Playfair(key='zgptfoihmuwdrcnykeqaxvsbl').encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :returns: The enciphered string.
+        """    
         string = self.remove_punctuation(string)  
         string = re.sub(r'[J]','I',string)
         if len(string)%2 == 1: string = string + 'X'
@@ -45,11 +53,16 @@ class Playfair(Cipher):
         return ret    
 
     def decipher(self,string):
-        '''
-        Decipher a string *string* using the Playfair cipher. All punctuation and spaces are removed from the string.
-        If the string has an odd number of characters, a pad character is appended. An error will be raised
-        if a character is encountered that is not in the key.
-        '''    
+        """Decipher string using Playfair cipher according to initialised key. Punctuation and whitespace
+        are removed from the input. The ciphertext should be an even number of characters. If the input ciphertext is not an even number of characters, an 'X' will be appended.
+
+        Example::
+
+            plaintext = Playfair(key='zgptfoihmuwdrcnykeqaxvsbl').decipher(ciphertext)     
+
+        :param string: The string to decipher.
+        :returns: The deciphered string.
+        """    
         string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''

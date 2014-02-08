@@ -34,12 +34,30 @@ class PolybiusSquare(Cipher):
         return self.key[row*self.size + col]
 
     def encipher(self,string):
+        """Encipher string using Polybius square cipher according to initialised key.
+
+        Example::
+
+            ciphertext = Polybius('APCZWRLFBDKOTYUQGENHXMIVS',5,'MKSBU').encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :returns: The enciphered string. The ciphertext will be twice the length of the plaintext.
+        """           
         string = self.remove_punctuation(string)
         ret = ''
         for c in string: ret += self.encipher_char(c)
         return ret    
 
     def decipher(self,string):
+        """Decipher string using Polybius square cipher according to initialised key.
+
+        Example::
+
+            plaintext = Polybius('APCZWRLFBDKOTYUQGENHXMIVS',5,'MKSBU').decipher(ciphertext)     
+
+        :param string: The string to decipher.
+        :returns: The deciphered string. The plaintext will be half the length of the ciphertext.
+        """         
         string = self.remove_punctuation(string)
         ret = ''
         for i in xrange(0,len(string),2):

@@ -12,6 +12,9 @@ class ADFGX(Cipher):
     """The ADFGX Cipher has a key consisting of a 5x5 key square and a word e.g. 'GERMAN'.
     The algorithm is described here: http://www.practicalcryptography.com/ciphers/classical-era/adfgvx/
     The key square consists of the letters A-Z with J omitted (25 characters total). 
+
+    :param key: The keysquare, as a 25 character string.
+    :param keyword: The keyword, any word or phrase will do.       
     """
     def __init__(self,key='phqgmeaylnofdxkrcvszwbuti',keyword='GERMAN'):
         self.key = [k.upper() for k in key]

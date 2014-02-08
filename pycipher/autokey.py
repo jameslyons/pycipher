@@ -10,8 +10,10 @@ class Autokey(Cipher):
     """The Autokey Cipher has a key consisting of a word e.g. 'FORTIFICATION'.
     This cipher encrypts a letter according to the Vigenere tableau, the algorithm can be 
     seen e.g. http://www.practicalcryptography.com/ciphers/classical-era/autokey/
+    
+    :param key: The keyword, any word or phrase will do. Must consist of alphabetical characters only, no punctuation of numbers.      
     """
-    def __init__(self,key='a'):
+    def __init__(self,key='FORTIFICATION'):
         self.key = [k.upper() for k in key]
         
     def encipher(self,string):

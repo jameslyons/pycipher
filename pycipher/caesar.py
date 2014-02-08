@@ -12,6 +12,8 @@ class Caesar(Cipher):
         
     where c is the ciphertext letter, p the plaintext letter.
     For more details on the Caesar cipher, see http://www.practicalcryptography.com/ciphers/caesar-cipher/
+    
+    :param key: The additive key. Allowable values are integers 0-25.
     """       
     
     def __init__(self,key=13):

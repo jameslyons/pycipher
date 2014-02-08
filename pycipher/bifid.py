@@ -11,6 +11,9 @@ class Bifid(Cipher):
     a 'period', which is an integer.
     For more information, the algorithm can be 
     seen e.g. http://www.practicalcryptography.com/ciphers/bifid-cipher/
+    
+    :param key: The keysquare, as a 25 character string.    
+    :param period: an integer.
     """
     def __init__(self,key='phqgmeaylnofdxkrcvszwbuti',period=5):
         self.key = [k.upper() for k in key]

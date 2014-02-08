@@ -11,12 +11,12 @@ from columnartransposition import ColTrans as ColTrans
 from gronsfeld import Gronsfeld as Gronsfeld
 from foursquare import Foursquare as Foursquare
 from m209 import M209 as M209
-from polybius import PolybiusSquare as Polybius
+from polybius import PolybiusSquare as PolybiusSquare
 from playfair import Playfair as Playfair
 from vigenere import Vigenere as Vigenere
 import util
 #from lorentz import Lorentz as Lorentz
 __all__=["ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
-         "Bifid","ColTrans","Gronsfeld","Foursquare","M209","Polybius","Playfair","Vigenere","util"]
+         "Bifid","ColTrans","Gronsfeld","Foursquare","M209","PolybiusSquare","Playfair","Vigenere","util"]
 
 

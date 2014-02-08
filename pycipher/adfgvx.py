@@ -12,6 +12,9 @@ class ADFGVX(Cipher):
     """The ADFGVX Cipher has a key consisting of a 6x6 key square and a word e.g. 'GERMAN'.
     The algorithm is described here: http://www.practicalcryptography.com/ciphers/classical-era/adfgvx/
     The key square consists of the letters A-Z and the numbers 0-9 (36 characters total). 
+
+    :param key: The keysquare, as a 36 character string.
+    :param keyword: The keyword, any word or phrase will do.   
     """
     def __init__(self,key='ph0qg64mea1yl2nofdxkr3cvs5zw7bj9uti8',keyword='GERMAN'):
         self.key = [k.upper() for k in key]
