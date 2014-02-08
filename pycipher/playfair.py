@@ -57,23 +57,5 @@ class Playfair(Cipher):
             ret += self.decipher_pair(string[c],string[c+1])
         return ret    
         
-    def pad_doubles(string):
-        ''' There are two ways of handling double letters in playfair, 
-        method 1: replacing the second occurrance with a pad character
-        e.g. 'THEATTACK'->'THEATXACK'                
-        method 2: putting a pad character between the pair
-        e.g. 'THEATTACK'->'THEATXTACK'.
-        This function implements method 2. It returns a modified string, possibly of different
-        length to the original.
-        '''
-        c=0
-        L = len(string)
-        while c < L-1:
-            if string[c] == string[c+1]:
-                string = string[:c]+string[c]+'X'+string[c+1:]
-            L = len(string)
-            c += 2
-        return string            
-        
 if __name__ == '__main__': 
     print 'use "import pycipher" to access functions'

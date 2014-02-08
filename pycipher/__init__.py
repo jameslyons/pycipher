@@ -1,6 +1,6 @@
 from adfgx import ADFGX as ADFGX
 from adfgvx import ADFGVX as ADFGVX
-from simplesubstitution import SimpleSubstitution as SimpleSub
+from simplesubstitution import SimpleSubstitution
 from caesar import Caesar as Caesar
 from affine import Affine
 from enigma import Enigma as Enigma
@@ -16,7 +16,7 @@ from playfair import Playfair as Playfair
 from vigenere import Vigenere as Vigenere
 import util
 #from lorentz import Lorentz as Lorentz
-__all__=["ADFGX","ADFGVX","SimpleSub","Caesar","Affine","Enigma","Autokey","Beaufort",
+__all__=["ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
          "Bifid","ColTrans","Gronsfeld","Foursquare","M209","Polybius","Playfair","Vigenere","util"]
 
 

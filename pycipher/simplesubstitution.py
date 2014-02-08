@@ -15,7 +15,7 @@ class SimpleSubstitution(Cipher):
         ciphertext = AJPCZWRLFBDKOTYUQGENHXMIVS
 
     To convert a plaintext letter into ciphertext, read along the plaintext row until the desired
-    letter is found, then substitute it with the letter below it.
+    letter is found, then substitute it with the letter below it. For more information see http://www.practicalcryptography.com/ciphers/simple-substitution-cipher/.
     """           
     def __init__(self,key='AJPCZWRLFBDKOTYUQGENHXMIVS'):
         assert len(key) == 26

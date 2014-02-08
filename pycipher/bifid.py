@@ -7,6 +7,11 @@ from .base import Cipher
 from polybius import PolybiusSquare
 ####################################################################################
 class Bifid(Cipher):
+    """The Bifid Cipher is a fractionating cipher, and has a key consisting of a 25 letter keysquare (with a letter removed e.g. 'J'), along with
+    a 'period', which is an integer.
+    For more information, the algorithm can be 
+    seen e.g. http://www.practicalcryptography.com/ciphers/bifid-cipher/
+    """
     def __init__(self,key='phqgmeaylnofdxkrcvszwbuti',period=5):
         self.key = [k.upper() for k in key]
         self.pb = PolybiusSquare(self.key,size=5)
@@ -15,6 +20,16 @@ class Bifid(Cipher):
         assert period>=1, 'invalid period in init: period should be >= 1'
 
     def encipher(self,string):
+        """Encipher string using Bifid cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.       
+
+        Example::
+
+            ciphertext = Bifid('phqgmeaylnofdxkrcvszwbuti',5).encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :returns: The enciphered string.
+        """                
         string = self.remove_punctuation(string)
         step1 = self.pb.encipher(string)
         evens = step1[::2]
@@ -26,6 +41,16 @@ class Bifid(Cipher):
         return self.pb.decipher(''.join(step2))
 
     def decipher(self,string):
+        """Decipher string using Bifid cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.
+
+        Example::
+
+            plaintext = Bifid('phqgmeaylnofdxkrcvszwbuti',5).decipher(ciphertext)     
+
+        :param string: The string to decipher.
+        :returns: The deciphered string.
+        """       
         ret = ''
         string = string.upper()
         rowseq,colseq = [],[]

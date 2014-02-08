@@ -8,9 +8,10 @@ class Caesar(Cipher):
     """The Caesar Cipher has a key consisting of an integer 1-25.
     This cipher encrypts a letter according to the following equation::
     
-        c = p + key
+        c = (p + key)%26
         
     where c is the ciphertext letter, p the plaintext letter.
+    For more details on the Caesar cipher, see http://www.practicalcryptography.com/ciphers/caesar-cipher/
     """       
     
     def __init__(self,key=13):

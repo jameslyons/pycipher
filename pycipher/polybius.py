@@ -8,6 +8,14 @@ import re
 
 ####################################################################################
 class PolybiusSquare(Cipher):
+    """The Polybius square is a simple substitution cipher that outputs 2 characters of ciphertext for each character of plaintext. It has a key consisting
+    which depends on 'size'. By default 'size' is 5, and the key is 25 letters (5^2). For a size of 6 a 36 letter key required etc.
+    For a more detailed look at how it works see http://www.practicalcryptography.com/ciphers/polybius-square-cipher/.
+    
+    :param key: The keysquare, each row one after the other. The key must by size^2 characters in length.
+    :param size: The size of the keysquare, if size=5, the keysquare uses 5^2 or 25 characters.
+    :param chars: the set of characters to use. By default ABCDE are used, this parameter should have the same length as size.
+    """    
     def __init__(self,key='phqgiumeaylnofdxkrcvstzwb',size=5,chars=None):
         self.key = ''.join([k.upper() for k in key])
         self.chars = chars or 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[:size]

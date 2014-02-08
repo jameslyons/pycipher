@@ -7,22 +7,37 @@ from .base import Cipher
 
 ####################################################################################
 class ColTrans(Cipher):
+    """The Columnar Transposition Cipher is a fractionating cipher, and has a key consisting of a word e.g. 'GERMAN'
+    For more information, the algorithm can be 
+    seen e.g. http://www.practicalcryptography.com/ciphers/columnar-transposition-cipher/ .
+    """
+
     def __init__(self,keyword='GERMAN'):
         self.keyword = keyword.upper()
         assert len(keyword)>0, 'invalid keyword in init: should be >= 1'
 
+    # return the sorted indices of a word e.g. 'german' = [2,1,5,3,0,4] '''
     def sortind(self,word):
-        ''' return the sorted indices of a word e.g. 'german' = [2,1,5,3,0,4] '''
         t1 = [(word[i],i) for i in xrange(len(word))]
         t2 = [(k[1],i) for i,k in enumerate(sorted(t1))]
         return [q[1] for q in sorted(t2)]
         
+    # return the unsorted indices of a word '''        
     def unsortind(self,word):
-        ''' return the unsorted indices of a word '''
         t1 = [(word[i],i) for i in xrange(len(word))]
         return [q[1] for q in sorted(t1)]        
         
     def encipher(self,string):
+        """Encipher string using Columnar Transposition cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.       
+
+        Example::
+
+            ciphertext = ColTrans('GERMAN').encipher(plaintext)     
+
+        :param string: The string to encipher.
+        :returns: The enciphered string.
+        """                    
         string = self.remove_punctuation(string)    
         ret = ''
         ind = self.sortind(self.keyword)
@@ -30,8 +45,18 @@ class ColTrans(Cipher):
             ret += string[ind.index(i)::len(self.keyword)]
         return ret
 
+    # deciphering is messy because the columns may be ragged '''
     def decipher(self,string):
-        ''' deciphering is messy because the columns may be ragged '''
+        '''Decipher string using Columnar Transposition cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.
+
+        Example::
+
+            plaintext = ColTrans('GERMAN').decipher(ciphertext)     
+
+        :param string: The string to decipher.
+        :returns: The deciphered string.
+        '''           
         string = self.remove_punctuation(string)        
         ret = ['_']*len(string)
         L,M = len(string),len(self.keyword)
