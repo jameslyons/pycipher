@@ -1,22 +1,24 @@
-from adfgx import ADFGX as ADFGX
-from adfgvx import ADFGVX as ADFGVX
+from adfgx import ADFGX 
+from adfgvx import ADFGVX 
 from simplesubstitution import SimpleSubstitution
-from caesar import Caesar as Caesar
+from caesar import Caesar 
 from affine import Affine
-from enigma import Enigma as Enigma
-from autokey import Autokey as Autokey
-from beaufort import Beaufort as Beaufort
+from enigma import Enigma 
+from autokey import Autokey 
+from beaufort import Beaufort 
 from bifid import Bifid as Bifid
-from columnartransposition import ColTrans as ColTrans
-from gronsfeld import Gronsfeld as Gronsfeld
-from foursquare import Foursquare as Foursquare
+from columnartransposition import ColTrans 
+from gronsfeld import Gronsfeld 
+from foursquare import Foursquare 
 from m209 import M209 as M209
-from polybius import PolybiusSquare as PolybiusSquare
-from playfair import Playfair as Playfair
-from vigenere import Vigenere as Vigenere
+from polybius import PolybiusSquare 
+from playfair import Playfair 
+from vigenere import Vigenere 
+from rot13 import Rot13
+from atbash import Atbash
 import util
 #from lorentz import Lorentz as Lorentz
-__all__=["ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
-         "Bifid","ColTrans","Gronsfeld","Foursquare","M209","PolybiusSquare","Playfair","Vigenere","util"]
+__all__=["Atbash","ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
+         "Bifid","ColTrans","Gronsfeld","Foursquare","M209","PolybiusSquare","Playfair","Vigenere","Rot13","util"]
 
-
+__version__ = "0.5.1"

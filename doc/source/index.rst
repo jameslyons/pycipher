@@ -82,6 +82,11 @@ Autokey Cipher
 .. autoclass:: pycipher.Autokey
    :members:
 
+Atbash Cipher
+--------------
+.. autoclass:: pycipher.Atbash
+   :members:
+   
 Beaufort Cipher
 ---------------
 .. autoclass:: pycipher.Beaufort
@@ -146,6 +151,11 @@ Polybius Square Cipher
 This cipher uses a keysquare as part of its key, see `A Short Aside on Keysquares`_ for information.
 
 .. autoclass:: pycipher.PolybiusSquare
+   :members:
+
+Rot13 Cipher
+--------------
+.. autoclass:: pycipher.Rot13
    :members:
 
 Simple Substitution Cipher
