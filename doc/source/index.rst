@@ -9,7 +9,7 @@ Welcome to pycipher's documentation!
 .. toctree::
    :maxdepth: 2
    
-Common classical ciphers implemented in Python.
+Common classical ciphers implemented in Python. Use the table of contents in the side panel to navigate.
 
 Example usage
 -------------

@@ -10,6 +10,8 @@ class ColTrans(Cipher):
     """The Columnar Transposition Cipher is a fractionating cipher, and has a key consisting of a word e.g. 'GERMAN'
     For more information, the algorithm can be 
     seen e.g. http://www.practicalcryptography.com/ciphers/columnar-transposition-cipher/ .
+    
+    :param key: The keyword, any word or phrase will do. Must consist of alphabetical characters only, no punctuation of numbers.    
     """
 
     def __init__(self,keyword='GERMAN'):

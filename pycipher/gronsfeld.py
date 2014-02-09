@@ -1,4 +1,4 @@
-'''
+'''  
 implements gronsfeld cipher
 Author: James Lyons
 Created: 2012-04-28
@@ -10,6 +10,8 @@ class Gronsfeld(Cipher):
     """The Gronsfeld Cipher is similar to the Vigenere Cipher, and has a key consisting of a sequence of numbers 0-9 e.g. [4,9,2,0,2].
     This cipher encrypts a letter according to the Vigenere tableau. More information about the algorithm can be 
     found at http://www.practicalcryptography.com/ciphers/vigenere-gronsfeld-and-autokey-cipher/
+    
+    :param key: The keyword, any word or phrase will do. Must consist of alphabetical characters only, no punctuation of numbers.        
     """
     def __init__(self,key=[5, 4, 7, 9, 8, 5, 8, 2, 0, 9, 8, 4, 3]):
         self.key = key
