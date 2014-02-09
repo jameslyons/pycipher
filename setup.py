@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pycipher',
-    version='0.4.1',
+    version='0.5.0',
     description='Several simple cipher algorithms',
     author='James Lyons',
     author_email='james.lyons0@gmail.com',
