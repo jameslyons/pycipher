@@ -23,6 +23,9 @@ Example usage
     >>> adfgvx.decipher(_)
     'HELLOWORLD'
 
+.. contents:: Table of Contents
+   :depth: 2
+    
 A Short Aside on Keysquares
 ----------------------------
 Many of the ciphers mentioned here e.g. :py:meth:`pycipher.Playfair`, :py:meth:`pycipher.Foursquare` use keysquares as part of their key information. A keysquare looks like this::
