@@ -1,4 +1,4 @@
-from pycipher import Polybius
+from pycipher import PolybiusSquare
 import unittest
 
 class TestPolybius(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestPolybius(unittest.TestCase):
         ciphertext = ('BDEEDDCEBCCDADABAEAEDBCABBCBCCAAACDCEAEBBADEEDDABEECBDEEDDCEBCCDADABAEAEDBCABBCBCCAAACDCEAEBBADEEDDABEEC',
                       'FBFFFECDDFBDBFECBEBECBCEDBDDFCEBBCEDEEFDBBCFEFDECCDCFBFFFECDDFBDBFECBEBECBCEDBDDFCEBBCEDEEFDBBCFEFDECCDC')
         for i,key in enumerate(keys):
-            enc = Polybius(*key).encipher(plaintext[i])
+            enc = PolybiusSquare(*key).encipher(plaintext[i])
             self.assertEqual(enc.upper(), ciphertext[i].upper())
 
     def test_decipher(self):
@@ -22,7 +22,7 @@ class TestPolybius(unittest.TestCase):
         ciphertext = ('BDEEDDCEBCCDADABAEAEDBCABBCBCCAAACDCEAEBBADEEDDABEECBDEEDDCEBCCDADABAEAEDBCABBCBCCAAACDCEAEBBADEEDDABEEC',
                       'FBFFFECDDFBDBFECBEBECBCEDBDDFCEBBCEDEEFDBBCFEFDECCDCFBFFFECDDFBDBFECBEBECBCEDBDDFCEBBCEDEEFDBBCFEFDECCDC')
         for i,key in enumerate(keys):
-            dec = Polybius(*key).decipher(ciphertext[i])
+            dec = PolybiusSquare(*key).decipher(ciphertext[i])
             self.assertEqual(dec.upper(), plaintext[i].upper())
             	
 if __name__ == '__main__':
