@@ -29,7 +29,7 @@ class Railfence(Cipher):
         :returns: The enciphered string.
         """        
         if not keep_punct: string = self.remove_punctuation(string)
-        return ''.join(buildfence(string, self.key)) 
+        return ''.join(self.buildfence(string, self.key)) 
 
     def decipher(self,string,keep_punct=False):
         """Decipher string using Railfence cipher according to initialised key.
@@ -44,10 +44,10 @@ class Railfence(Cipher):
         """        
         if not keep_punct: string = self.remove_punctuation(string)    
         ind = range(len(string))
-        pos = buildfence(ind, self.key)
-        return ''.join(text[pos.index(i)] for i in ind)
+        pos = self.buildfence(ind, self.key)
+        return ''.join(string[pos.index(i)] for i in ind)
 
-    def buildfence(chars, numrails):
+    def buildfence(self,chars, numrails):
         fence = [[None] * len(chars) for n in range(numrails)]
         rails = range(numrails - 1) + range(numrails - 1, 0, -1)
         for n, x in enumerate(chars):
