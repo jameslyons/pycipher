@@ -1,7 +1,7 @@
 '''
 implements porta cipher
 Author: James Lyons
-Created: 2012-04-28
+Created: 2014-02-12
 '''
 from .base import Cipher
 

@@ -25,5 +25,5 @@ class Cipher(object):
         arr = ('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')
         return arr[i]
         
-    def remove_punctuation(self,text):
-        return re.sub('[^A-Z]','',text.upper())
+    def remove_punctuation(self,text,filter='[^A-Z]'):
+        return re.sub(filter,'',text.upper())

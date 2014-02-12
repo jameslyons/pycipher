@@ -153,6 +153,11 @@ This cipher uses a keysquare as part of its key, see `A Short Aside on Keysquare
 .. autoclass:: pycipher.PolybiusSquare
    :members:
 
+Porta Cipher
+--------------
+.. autoclass:: pycipher.Porta
+   :members:
+   
 Railfence Cipher
 --------------
 .. autoclass:: pycipher.Railfence
