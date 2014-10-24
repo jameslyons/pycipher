@@ -30,18 +30,18 @@ class Porta(Cipher):
         for (i,c) in enumerate(string):
             i = i%len(self.key)
             if   self.key[i] in 'AB': ret += 'NOPQRSTUVWXYZABCDEFGHIJKLM'[self.a2i(c)]
-            elif self.key[i] in 'CD': ret += 'ZNOPQRSTUVWXYBCDEFGHIJKLMA'[self.a2i(c)]
-            elif self.key[i] in 'EF': ret += 'YZNOPQRSTUVWXCDEFGHIJKLMAB'[self.a2i(c)]
-            elif self.key[i] in 'GH': ret += 'XYZNOPQRSTUVWDEFGHIJKLMABC'[self.a2i(c)]
-            elif self.key[i] in 'IJ': ret += 'WXYZNOPQRSTUVEFGHIJKLMABCD'[self.a2i(c)]
-            elif self.key[i] in 'KL': ret += 'VWXYZNOPQRSTUFGHIJKLMABCDE'[self.a2i(c)]
-            elif self.key[i] in 'MN': ret += 'UVWXYZNOPQRSTGHIJKLMABCDEF'[self.a2i(c)]
-            elif self.key[i] in 'OP': ret += 'TUVWXYZNOPQRSHIJKLMABCDEFG'[self.a2i(c)]
-            elif self.key[i] in 'QR': ret += 'STUVWXYZNOPQRIJKLMABCDEFGH'[self.a2i(c)]
-            elif self.key[i] in 'ST': ret += 'RSTUVWXYZNOPQJKLMABCDEFGHI'[self.a2i(c)]
-            elif self.key[i] in 'UV': ret += 'QRSTUVWXYZNOPKLMABCDEFGHIJ'[self.a2i(c)]
-            elif self.key[i] in 'WX': ret += 'PQRSTUVWXYZNOLMABCDEFGHIJK'[self.a2i(c)]
-            elif self.key[i] in 'YZ': ret += 'OPQRSTUVWXYZNMABCDEFGHIJKL'[self.a2i(c)]
+            elif self.key[i] in 'YZ': ret += 'ZNOPQRSTUVWXYBCDEFGHIJKLMA'[self.a2i(c)]
+            elif self.key[i] in 'WX': ret += 'YZNOPQRSTUVWXCDEFGHIJKLMAB'[self.a2i(c)]
+            elif self.key[i] in 'UV': ret += 'XYZNOPQRSTUVWDEFGHIJKLMABC'[self.a2i(c)]
+            elif self.key[i] in 'ST': ret += 'WXYZNOPQRSTUVEFGHIJKLMABCD'[self.a2i(c)]
+            elif self.key[i] in 'QR': ret += 'VWXYZNOPQRSTUFGHIJKLMABCDE'[self.a2i(c)]
+            elif self.key[i] in 'OP': ret += 'UVWXYZNOPQRSTGHIJKLMABCDEF'[self.a2i(c)]
+            elif self.key[i] in 'MN': ret += 'TUVWXYZNOPQRSHIJKLMABCDEFG'[self.a2i(c)]
+            elif self.key[i] in 'KL': ret += 'STUVWXYZNOPQRIJKLMABCDEFGH'[self.a2i(c)]
+            elif self.key[i] in 'IJ': ret += 'RSTUVWXYZNOPQJKLMABCDEFGHI'[self.a2i(c)]
+            elif self.key[i] in 'GH': ret += 'QRSTUVWXYZNOPKLMABCDEFGHIJ'[self.a2i(c)]
+            elif self.key[i] in 'EF': ret += 'PQRSTUVWXYZNOLMABCDEFGHIJK'[self.a2i(c)]
+            elif self.key[i] in 'CD': ret += 'OPQRSTUVWXYZNMABCDEFGHIJKL'[self.a2i(c)]
         return ret    
 
     def decipher(self,string):
