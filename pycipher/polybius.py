@@ -43,7 +43,7 @@ class PolybiusSquare(Cipher):
         :param string: The string to encipher.
         :returns: The enciphered string. The ciphertext will be twice the length of the plaintext.
         """           
-        string = self.remove_punctuation(string)
+        string = self.remove_punctuation(string,filter='[^'+self.key+']')
         ret = ''
         for c in string: ret += self.encipher_char(c)
         return ret    
@@ -58,7 +58,7 @@ class PolybiusSquare(Cipher):
         :param string: The string to decipher.
         :returns: The deciphered string. The plaintext will be half the length of the ciphertext.
         """         
-        string = self.remove_punctuation(string)
+        string = self.remove_punctuation(string,filter='[^'+self.chars+']')
         ret = ''
         for i in xrange(0,len(string),2):
             ret += self.decipher_pair(string[i:i+2])
