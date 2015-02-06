@@ -23,6 +23,6 @@ import util
 #from lorentz import Lorentz as Lorentz
 __all__=["Atbash","ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
          "Bifid","ColTrans","Gronsfeld","Foursquare","M209","PolybiusSquare","Playfair","Vigenere","Rot13","util",
-         "Railfence","Porta"]
+         "Railfence","Porta","FracMorse"]
 
 __version__ = "0.5.1"
