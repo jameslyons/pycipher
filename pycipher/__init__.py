@@ -18,6 +18,7 @@ from rot13 import Rot13
 from atbash import Atbash
 from railfence import Railfence
 from porta import Porta
+from fracmorse import FracMorse
 import util
 #from lorentz import Lorentz as Lorentz
 __all__=["Atbash","ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
