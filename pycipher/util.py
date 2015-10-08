@@ -53,7 +53,7 @@ def restore_punctuation(original,modified):
                 count+=1
             else: ret+=c
     except IndexError:
-        print 'restore_punctuation: strings must have same number of alphabetic chars'
+        print('restore_punctuation: strings must have same number of alphabetic chars')
         raise
     return ret
     

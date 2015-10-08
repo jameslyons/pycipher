@@ -1,16 +1,16 @@
 '''
-implements polybius square cipher
+implements pycipher.polybius square cipher
 Author: James Lyons
 Created: 2012-04-28
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 import re
 
 ####################################################################################
 class PolybiusSquare(Cipher):
     """The Polybius square is a simple substitution cipher that outputs 2 characters of ciphertext for each character of plaintext. It has a key consisting
     which depends on 'size'. By default 'size' is 5, and the key is 25 letters (5^2). For a size of 6 a 36 letter key required etc.
-    For a more detailed look at how it works see http://www.practicalcryptography.com/ciphers/polybius-square-cipher/.
+    For a more detailed look at how it works see http://www.practicalcryptography.com/ciphers pycipher.polybius-square-cipher/.
     
     :param key: The keysquare, each row one after the other. The key must by size^2 characters in length.
     :param size: The size of the keysquare, if size=5, the keysquare uses 5^2 or 25 characters.
@@ -65,4 +65,4 @@ class PolybiusSquare(Cipher):
         return ret    
 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

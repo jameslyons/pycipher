@@ -3,7 +3,7 @@ implements Railfence cipher
 Author: James Lyons
 Created: 2014-02-10
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 
 ####################################################################################
 class Railfence(Cipher):
@@ -55,4 +55,4 @@ class Railfence(Cipher):
         return [c for rail in fence for c in rail if c is not None]
          
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

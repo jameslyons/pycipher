@@ -4,7 +4,7 @@ Author: James Lyons
 Created: 2012-04-28
 '''
 
-from .base import Cipher
+from pycipher.base import Cipher
 
 class M209(Cipher):
     ''' The M209 cipher. The key consists of several parameters.
@@ -112,4 +112,4 @@ class M209(Cipher):
         
         
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

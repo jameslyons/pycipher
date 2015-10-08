@@ -3,9 +3,9 @@ implements ADFGX cipher
 Author: James Lyons
 Created: 2012-04-28
 '''
-from .base import Cipher
-from columnartransposition import ColTrans
-from polybius import PolybiusSquare
+from pycipher.base import Cipher
+from pycipher.columnartransposition import ColTrans
+from pycipher.polybius import PolybiusSquare
 
 ####################################################################################
 class ADFGX(Cipher):
@@ -53,4 +53,4 @@ class ADFGX(Cipher):
         return step1    
 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

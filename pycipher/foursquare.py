@@ -3,7 +3,7 @@ implements Foursquare cipher
 Author: James Lyons
 Created: 2012-04-28
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 
 ####################################################################################
 class Foursquare(Cipher):
@@ -70,4 +70,4 @@ class Foursquare(Cipher):
         return ret    
         
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

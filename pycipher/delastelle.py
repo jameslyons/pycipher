@@ -4,7 +4,7 @@ Author: James Lyons
 Created: 2014-02-12
 '''
 from itertools import product
-from .base import Cipher
+from pycipher.base import Cipher
 import re
 
 ####################################################################################
@@ -57,4 +57,4 @@ class Delastelle(Cipher):
         return ret    
 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

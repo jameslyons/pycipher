@@ -3,7 +3,7 @@ implements enigma cipher
 Author: James Lyons 
 Created: 2012-04-28
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 
 class Enigma(Cipher):
     ''' The Enigma M3 cipher. The key consists of several parameters.
@@ -147,4 +147,4 @@ class Enigma(Cipher):
         return ret
         
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')
