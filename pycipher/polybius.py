@@ -24,9 +24,9 @@ class PolybiusSquare(Cipher):
         assert len(self.chars)==size, 'invalid chars in init: must have length=size, has length '+str(len(chars))
 
     def encipher_char(self,ch):
-        row = self.key.index(ch) / self.size
-        col = self.key.index(ch) % self.size
-        return self.chars[row]+self.chars[col]
+        row = (int)(self.key.index(ch) / self.size)
+        col = (self.key.index(ch) % self.size)
+        return self.chars[row] + self.chars[col]
     
     def decipher_pair(self,pair):
         row = self.chars.index(pair[0])
@@ -43,9 +43,10 @@ class PolybiusSquare(Cipher):
         :param string: The string to encipher.
         :returns: The enciphered string. The ciphertext will be twice the length of the plaintext.
         """           
-        string = self.remove_punctuation(string,filter='[^'+self.key+']')
+        string = self.remove_punctuation(string)#,filter='[^'+self.key+']')
         ret = ''
-        for c in string: ret += self.encipher_char(c)
+        for c in range(0,len(string)):
+            ret += self.encipher_char(string[c])
         return ret    
 
     def decipher(self,string):
@@ -58,9 +59,9 @@ class PolybiusSquare(Cipher):
         :param string: The string to decipher.
         :returns: The deciphered string. The plaintext will be half the length of the ciphertext.
         """         
-        string = self.remove_punctuation(string,filter='[^'+self.chars+']')
+        string = self.remove_punctuation(string)#,filter='[^'+self.chars+']')
         ret = ''
-        for i in xrange(0,len(string),2):
+        for i in range(0,len(string),2):
             ret += self.decipher_pair(string[i:i+2])
         return ret    
 

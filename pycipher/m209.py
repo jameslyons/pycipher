@@ -72,7 +72,7 @@ class M209(Cipher):
                                        # -the zero at the beginning is extra, indicates lug was in pos 0
         ret = ''
         # from now we no longer need the wheel starts, we can just increment the actual key
-        for j in xrange(len(message)):
+        for j in range(len(message)):
             shift = 0 
             effective_ch[0] = 0;
             effective_ch[1] = self.wheel_1_settings[self.actual_key[0]]
@@ -82,7 +82,7 @@ class M209(Cipher):
             effective_ch[5] = self.wheel_5_settings[self.actual_key[4]]
             effective_ch[6] = self.wheel_6_settings[self.actual_key[5]]
              
-            for i in xrange(0,27): # implements the cylindrical drum with lugs on it
+            for i in range(0,27): # implements the cylindrical drum with lugs on it
                 if effective_ch[self.lug_positions[i][0]] or effective_ch[self.lug_positions[i][1]]: shift+=1
             # shift has been found, now actually encrypt letter
             ret += self.subst(message[j],key='ZYXWVUTSRQPONMLKJIHGFEDCBA',offset=-shift); # encrypt letter

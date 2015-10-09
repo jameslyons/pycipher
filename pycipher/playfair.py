@@ -48,7 +48,7 @@ class Playfair(Cipher):
         string = re.sub(r'[J]','I',string)
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
-        for c in xrange(0,len(string),2):
+        for c in range(0,len(string),2):
             ret += self.encipher_pair(string[c],string[c+1])
         return ret    
 
@@ -66,7 +66,7 @@ class Playfair(Cipher):
         string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
-        for c in xrange(0,len(string),2):
+        for c in range(0,len(string),2):
             ret += self.decipher_pair(string[c],string[c+1])
         return ret    
         

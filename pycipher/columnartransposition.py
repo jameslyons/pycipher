@@ -20,13 +20,13 @@ class ColTrans(Cipher):
 
     # return the sorted indices of a word e.g. 'german' = [2,1,5,3,0,4] '''
     def sortind(self,word):
-        t1 = [(word[i],i) for i in xrange(len(word))]
+        t1 = [(word[i],i) for i in range(len(word))]
         t2 = [(k[1],i) for i,k in enumerate(sorted(t1))]
         return [q[1] for q in sorted(t2)]
         
     # return the unsorted indices of a word '''        
     def unsortind(self,word):
-        t1 = [(word[i],i) for i in xrange(len(word))]
+        t1 = [(word[i],i) for i in range(len(word))]
         return [q[1] for q in sorted(t1)]        
         
     def encipher(self,string):
@@ -65,7 +65,7 @@ class ColTrans(Cipher):
         ind = self.unsortind(self.keyword)
         upto = 0
         for i in range(len(self.keyword)):
-            thiscollen = L/M
+            thiscollen = (int)(L/M)
             if ind[i]< L%M: thiscollen += 1
             ret[ind[i]::M] = string[upto:upto+thiscollen]
             upto += thiscollen
