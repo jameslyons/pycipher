@@ -3,7 +3,7 @@ implements autokey cipher
 Author: James Lyons
 Created: 2012-04-28
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 
 ####################################################################################
 class Autokey(Cipher):
@@ -55,4 +55,4 @@ class Autokey(Cipher):
         return ret    
 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

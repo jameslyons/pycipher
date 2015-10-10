@@ -3,7 +3,7 @@ implements fractionated morse cipher
 Author: James Lyons
 Created: 2014-01-26
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 import re
 import sys
 ####################################################################################
@@ -91,4 +91,4 @@ class FracMorse(Cipher):
 
     
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

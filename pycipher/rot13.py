@@ -2,7 +2,7 @@
 #Author: James Lyons 
 #Created: 2014-02-09
 
-from .base import Cipher
+from pycipher.base import Cipher
 
 class Rot13(Cipher):
     """The Rot13 Cipher has no key, it is commonly used just to hide text.
@@ -49,4 +49,4 @@ class Rot13(Cipher):
         return self.encipher(string,keep_punct)
                 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

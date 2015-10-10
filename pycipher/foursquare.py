@@ -3,7 +3,7 @@ implements Foursquare cipher
 Author: James Lyons
 Created: 2012-04-28
 '''
-from .base import Cipher
+from pycipher.base import Cipher
 
 ####################################################################################
 class Foursquare(Cipher):
@@ -45,7 +45,7 @@ class Foursquare(Cipher):
         string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
-        for c in xrange(0,len(string.upper()),2):
+        for c in range(0,len(string.upper()),2):
             a,b = self.encipher_pair(string[c],string[c+1])
             ret += a + b
         return ret    
@@ -64,10 +64,10 @@ class Foursquare(Cipher):
         string = self.remove_punctuation(string)  
         if len(string)%2 == 1: string = string + 'X'
         ret = ''
-        for c in xrange(0,len(string.upper()),2):
+        for c in range(0,len(string.upper()),2):
             a,b = self.decipher_pair(string[c],string[c+1])
             ret += a + b
         return ret    
         
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

@@ -3,8 +3,8 @@ implements bifid cipher
 Author: James Lyons 
 Created: 2012-04-28
 '''
-from .base import Cipher
-from polybius import PolybiusSquare
+from pycipher.base import Cipher
+from pycipher.polybius import PolybiusSquare
 ####################################################################################
 class Bifid(Cipher):
     """The Bifid Cipher is a fractionating cipher, and has a key consisting of a 25 letter keysquare (with a letter removed e.g. 'J'), along with
@@ -38,7 +38,7 @@ class Bifid(Cipher):
         evens = step1[::2]
         odds = step1[1::2]
         step2 = []
-        for i in xrange(0,len(string),self.period):
+        for i in range(0,len(string),self.period):
             step2 += evens[i:i+self.period]
             step2 += odds[i:i+self.period]
         return self.pb.decipher(''.join(step2))
@@ -66,9 +66,9 @@ class Bifid(Cipher):
                 tempseq.append( self.key.index(string[i + j]) % 5 )
             rowseq.extend(tempseq[0:len(tempseq)/2])
             colseq.extend(tempseq[len(tempseq)/2:])
-        for i in xrange(len(rowseq)):
+        for i in range(len(rowseq)):
             ret += self.key[rowseq[i]*5 + colseq[i]]  
         return ret    
 
 if __name__ == '__main__': 
-    print 'use "import pycipher" to access functions'
+    print('use "import pycipher" to access functions')

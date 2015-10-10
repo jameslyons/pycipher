@@ -20,7 +20,7 @@ def ngram_count(text,N=1,keep_punct=False):
         There is an option to remove all spaces and punctuation prior to processing '''
     if not keep_punct: text = re.sub('[^A-Z]','',text.upper())
     count = {}
-    for i in xrange(len(text)-N+1):
+    for i in range(len(text)-N+1):
         c = text[i:i+N]
         if c in count: count[c] += 1
         else: count[c] = 1.0
@@ -53,7 +53,7 @@ def restore_punctuation(original,modified):
                 count+=1
             else: ret+=c
     except IndexError:
-        print 'restore_punctuation: strings must have same number of alphabetic chars'
+        print('restore_punctuation: strings must have same number of alphabetic chars')
         raise
     return ret
     
