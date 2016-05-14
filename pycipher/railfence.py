@@ -49,7 +49,7 @@ class Railfence(Cipher):
 
     def buildfence(self,chars, numrails):
         fence = [[None] * len(chars) for n in range(numrails)]
-        rails = range(numrails - 1) + range(numrails - 1, 0, -1)
+        rails = list(range(numrails - 1)) + list(range(numrails - 1, 0, -1))
         for n, x in enumerate(chars):
             fence[rails[n % len(rails)]][n] = x
         return [c for rail in fence for c in rail if c is not None]
