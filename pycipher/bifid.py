@@ -62,12 +62,12 @@ class Bifid(Cipher):
             tempseq = []
             for j in range(0,self.period):
                 if i+j >= len(string): continue
-                tempseq.append( self.key.index(string[i + j]) / 5 )
-                tempseq.append( self.key.index(string[i + j]) % 5 )
+                tempseq.append(int(self.key.index(string[i + j]) / 5))
+                tempseq.append(int(self.key.index(string[i + j]) % 5))
             rowseq.extend(tempseq[0:int(len(tempseq)/2)])
             colseq.extend(tempseq[int(len(tempseq)/2):])
         for i in range(len(rowseq)):
-            ret += self.key[int(rowseq[i]*5 + colseq[i])]
+            ret += self.key[rowseq[i]*5 + colseq[i]]
         return ret    
 
 if __name__ == '__main__': 
