@@ -43,7 +43,7 @@ class Bifid(Cipher):
             step2 += odds[i:int(i+self.period)]
         return self.pb.decipher(''.join(step2))
 
-    def decipher(self,string):
+    def decipher_period(self,string):
         """Decipher string using Bifid cipher according to initialised key. Punctuation and whitespace
         are removed from the input.
 
@@ -68,7 +68,36 @@ class Bifid(Cipher):
             colseq.extend(tempseq[int(len(tempseq)/2):])
         for i in range(len(rowseq)):
             ret += self.key[rowseq[i]*5 + colseq[i]]
-        return ret    
+        return ret
+
+    def decipher(self,string):
+        """Decipher string using Bifid cipher according to initialised key. Punctuation and whitespace
+        are removed from the input.
+
+        Example::
+
+            plaintext = Bifid('phqgmeaylnofdxkrcvszwbuti',5).decipher(ciphertext)
+
+        :param string: The string to decipher.
+        :returns: The deciphered string.
+        """
+        ret = ''
+        string = string.upper()
+        rowseq,colseq = [],[]
+        # take blocks of length period, reform rowseq,colseq from them
+        tempseq = []
+        for c in string:
+            c = c if c != 'J' else 'I'
+            i = self.key.index(c)
+            tempseq.append(int(i / 5))
+            tempseq.append(int(i % 5))
+
+        rowseq.extend(tempseq[0:int(len(tempseq)/2)])
+        colseq.extend(tempseq[int(len(tempseq)/2):])
+        for i in range(len(rowseq)):
+            ret += self.key[rowseq[i]*5 + colseq[i]]
+
+        return ret
 
 if __name__ == '__main__': 
     print('use "import pycipher" to access functions')
