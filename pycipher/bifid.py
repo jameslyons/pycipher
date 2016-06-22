@@ -39,8 +39,8 @@ class Bifid(Cipher):
         odds = step1[1::2]
         step2 = []
         for i in range(0,len(string),self.period):
-            step2 += evens[i:i+self.period]
-            step2 += odds[i:i+self.period]
+            step2 += evens[i:int(i+self.period)]
+            step2 += odds[i:int(i+self.period)]
         return self.pb.decipher(''.join(step2))
 
     def decipher(self,string):
@@ -62,13 +62,13 @@ class Bifid(Cipher):
             tempseq = []
             for j in range(0,self.period):
                 if i+j >= len(string): continue
-                tempseq.append( self.key.index(string[i + j]) / 5 )
-                tempseq.append( self.key.index(string[i + j]) % 5 )
-            rowseq.extend(tempseq[0:len(tempseq)/2])
-            colseq.extend(tempseq[len(tempseq)/2:])
+                tempseq.append(int(self.key.index(string[i + j]) / 5))
+                tempseq.append(int(self.key.index(string[i + j]) % 5))
+            rowseq.extend(tempseq[0:int(len(tempseq)/2)])
+            colseq.extend(tempseq[int(len(tempseq)/2):])
         for i in range(len(rowseq)):
-            ret += self.key[rowseq[i]*5 + colseq[i]]  
-        return ret    
+            ret += self.key[rowseq[i]*5 + colseq[i]]
+        return ret
 
 if __name__ == '__main__': 
     print('use "import pycipher" to access functions')
